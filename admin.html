@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Panel - Adel Maurice</title>
+    <meta name="robots" content="noindex, nofollow">
+    <link rel="icon" type="image/png" href="img/favicon-32x32.png">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <script>
+        tailwind.config = {
+            theme: { extend: { colors: { primary: '#1e3a8a', secondary: '#c9a227', dark: '#0f172a' } } }
+        }
+    </script>
+    
+    <style>
+        body { font-family: 'Inter', sans-serif; }
+        .bg-gold-gradient { background: linear-gradient(135deg, #c9a227 0%, #f59e0b 100%); }
+        .stat-card { background: linear-gradient(135deg, #f8fafc, #e2e8f0); border-radius: 16px; padding: 1.5rem; margin-bottom: 1rem; border-left: 4px solid #c9a227; transition: transform 0.2s; }
+        .stat-card:hover { transform: translateX(5px); }
+        .login-container { min-height: 100vh; background: linear-gradient(135deg, #1e3a8a 0%, #0f172a 100%); }
+        .country-flag { width: 28px; height: 20px; object-fit: cover; border-radius: 3px; }
+    </style>
+</head>
+<body>
+    <!-- Login Screen -->
+    <div id="loginScreen" class="login-container flex items-center justify-center p-4">
+        <div class="bg-white p-8 rounded-3xl shadow-2xl max-w-md w-full">
+            <div class="text-center mb-8">
+                <img src="img/logo.png" alt="Adel Maurice" class="h-20 mx-auto mb-4">
+                <h1 class="text-2xl font-bold text-primary">Admin Panel</h1>
+                <p class="text-gray-500 text-sm mt-2">Enter password to access analytics</p>
+            </div>
+            <input type="password" id="adminPassword" placeholder="Password" 
+                   class="w-full px-4 py-4 rounded-xl border-2 border-gray-200 focus:border-secondary focus:outline-none text-lg mb-4"
+                   onkeypress="if(event.key === 'Enter') checkPassword()">
+            <button onclick="checkPassword()" class="w-full py-4 bg-gold-gradient text-white font-bold rounded-xl text-lg hover:opacity-90">Login</button>
+            <p id="errorMsg" class="text-red-500 text-center mt-4 hidden">Invalid password!</p>
+            <a href="/" class="block text-center text-gray-500 mt-4 hover:text-primary">← Back to Website</a>
+        </div>
+    </div>
+
+    <!-- Dashboard Screen -->
+    <div id="dashboardScreen" class="hidden bg-gray-100 min-h-screen">
+        <header class="bg-primary text-white p-4 sticky top-0 z-50 shadow-lg">
+            <div class="container mx-auto flex justify-between items-center">
+                <div class="flex items-center gap-4">
+                    <img src="img/logo.png" alt="Adel Maurice" class="h-12 bg-white rounded-lg p-1">
+                    <div>
+                        <h1 class="font-bold text-xl">Analytics Dashboard</h1>
+                        <p class="text-xs text-gray-300">Adel Maurice - Legal Accountant</p>
+                    </div>
+                </div>
+                <div class="flex items-center gap-4">
+                    <button onclick="refreshData()" class="bg-white/20 px-4 py-2 rounded-lg hover:bg-white/30"><i class="fas fa-sync-alt mr-2"></i>Refresh</button>
+                    <button onclick="logout()" class="bg-red-500 px-4 py-2 rounded-lg hover:bg-red-600"><i class="fas fa-sign-out-alt mr-2"></i>Logout</button>
+                </div>
+            </div>
+        </header>
+
+        <main class="container mx-auto p-6">
+            <!-- Stats Cards -->
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
+                <div class="stat-card">
+                    <div class="flex justify-between items-start">
+                        <div>
+                            <p class="text-gray-500 text-sm font-medium">Total Visits</p>
+                            <p class="text-4xl font-black text-primary mt-2" id="totalVisits">-</p>
+                        </div>
+                        <div class="w-12 h-12 bg-primary/10 rounded-xl flex items-center justify-center"><i class="fas fa-users text-primary text-xl"></i></div>
+                    </div>
+                </div>
+                
+                <div class="stat-card">
+                    <div class="flex justify-between items-start">
+                        <div>
+                            <p class="text-gray-500 text-sm font-medium">Today</p>
+                            <p class="text-4xl font-black text-secondary mt-2" id="todayVisits">-</p>
+                        </div>
+                        <div class="w-12 h-12 bg-secondary/10 rounded-xl flex items-center justify-center"><i class="fas fa-calendar-day text-secondary text-xl"></i></div>
+                    </div>
+                </div>
+                
+                <div class="stat-card">
+                    <div class="flex justify-between items-start">
+                        <div>
+                            <p class="text-gray-500 text-sm font-medium">This Week</p>
+                            <p class="text-4xl font-black text-green-600 mt-2" id="weekVisits">-</p>
+                        </div>
+                        <div class="w-12 h-12 bg-green-100 rounded-xl flex items-center justify-center"><i class="fas fa-chart-line text-green-600 text-xl"></i></div>
+                    </div>
+                </div>
+                
+                <div class="stat-card">
+                    <div class="flex justify-between items-start">
+                        <div>
+                            <p class="text-gray-500 text-sm font-medium">This Month</p>
+                            <p class="text-4xl font-black text-purple-600 mt-2" id="monthVisits">-</p>
+                        </div>
+                        <div class="w-12 h-12 bg-purple-100 rounded-xl flex items-center justify-center"><i class="fas fa-calendar-alt text-purple-600 text-xl"></i></div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Countries & Languages -->
+            <div class="grid lg:grid-cols-2 gap-6">
+                <div class="bg-white rounded-2xl p-6 shadow-lg">
+                    <h3 class="text-xl font-bold text-primary mb-4 flex items-center gap-2"><i class="fas fa-globe text-secondary"></i>Top Countries</h3>
+                    <div id="countriesList" class="space-y-3"><p class="text-gray-500 text-center py-8">Loading...</p></div>
+                </div>
+                
+                <div class="bg-white rounded-2xl p-6 shadow-lg">
+                    <h3 class="text-xl font-bold text-primary mb-4 flex items-center gap-2"><i class="fas fa-language text-secondary"></i>Languages Used</h3>
+                    <div id="languagesList" class="space-y-3"><p class="text-gray-500 text-center py-8">Loading...</p></div>
+                </div>
+            </div>
+
+            <!-- Recent Visits -->
+            <div class="bg-white rounded-2xl p-6 shadow-lg mt-6">
+                <h3 class="text-xl font-bold text-primary mb-4 flex items-center gap-2"><i class="fas fa-history text-secondary"></i>Recent Visits</h3>
+                <div class="overflow-x-auto">
+                    <table class="w-full text-left">
+                        <thead class="bg-gray-50">
+                            <tr>
+                                <th class="p-3 rounded-l-lg">Date</th>
+                                <th class="p-3">Country</th>
+                                <th class="p-3 rounded-r-lg">Language</th>
+                            </tr>
+                        </thead>
+                        <tbody id="recentVisits"><tr><td colspan="3" class="p-3 text-center text-gray-500">Loading...</td></tr></tbody>
+                    </table>
+                </div>
+            </div>
+
+            <!-- Actions -->
+            <div class="flex gap-4 mt-6">
+                <button onclick="exportData()" class="flex-1 py-3 bg-primary text-white rounded-xl hover:bg-blue-800"><i class="fas fa-download mr-2"></i>Export CSV</button>
+                <button onclick="clearLocalData()" class="flex-1 py-3 bg-red-500 text-white rounded-xl hover:bg-red-600"><i class="fas fa-trash mr-2"></i>Clear Local Data</button>
+            </div>
+        </main>
+    </div>
+
+    <script>
+        const ADMIN_PASSWORD = 'adel2024';
+        
+        function checkPassword() {
+            const input = document.getElementById('adminPassword').value;
+            if (input === ADMIN_PASSWORD) {
+                sessionStorage.setItem('adminLoggedIn', 'true');
+                document.getElementById('loginScreen').classList.add('hidden');
+                document.getElementById('dashboardScreen').classList.remove('hidden');
+                loadAnalytics();
+            } else {
+                document.getElementById('errorMsg').classList.remove('hidden');
+            }
+        }
+
+        function logout() {
+            sessionStorage.removeItem('adminLoggedIn');
+            document.getElementById('dashboardScreen').classList.add('hidden');
+            document.getElementById('loginScreen').classList.remove('hidden');
+            document.getElementById('adminPassword').value = '';
+            document.getElementById('errorMsg').classList.add('hidden');
+        }
+
+        async function loadAnalytics() {
+            try {
+                const totalRes = await fetch('https://api.countapi.xyz/get/adel-maurice-com/visits');
+                const totalData = await totalRes.json();
+                document.getElementById('totalVisits').textContent = totalData.value || 0;
+            } catch (e) {
+                document.getElementById('totalVisits').textContent = 'N/A';
+            }
+
+            const visits = JSON.parse(localStorage.getItem('am_visits') || '[]');
+            const today = new Date().toDateString();
+            const weekAgo = new Date(Date.now() - 7 * 24 * 60 * 60 * 1000);
+            const monthAgo = new Date(Date.now() - 30 * 24 * 60 * 60 * 1000);
+
+            document.getElementById('todayVisits').textContent = visits.filter(v => new Date(v.date).toDateString() === today).length;
+            document.getElementById('weekVisits').textContent = visits.filter(v => new Date(v.date) >= weekAgo).length;
+            document.getElementById('monthVisits').textContent = visits.filter(v => new Date(v.date) >= monthAgo).length;
+
+            const countries = {};
+            visits.forEach(v => { const name = v.country || 'Unknown'; countries[name] = (countries[name] || 0) + 1; });
+
+            const countriesList = document.getElementById('countriesList');
+            const sortedCountries = Object.entries(countries).sort((a, b) => b[1] - a[1]).slice(0, 10);
+            
+            countriesList.innerHTML = sortedCountries.length === 0 ? '<p class="text-gray-500 text-center py-4">No data yet</p>' :
+                sortedCountries.map(([country, count]) => `
+                    <div class="flex items-center justify-between p-3 bg-gray-50 rounded-lg hover:bg-gray-100">
+                        <div class="flex items-center gap-3">
+                            <img src="https://flagcdn.com/w40/${getCountryCode(country)}.png" alt="${country}" class="country-flag" onerror="this.src='https://via.placeholder.com/28x20?text=XX'">
+                            <span class="font-medium">${country}</span>
+                        </div>
+                        <span class="bg-secondary text-white px-3 py-1 rounded-full text-sm font-bold">${count}</span>
+                    </div>
+                `).join('');
+
+            const languages = { ar: 'العربية', en: 'English', de: 'Deutsch', ru: 'Русский' };
+            const langCounts = {};
+            visits.forEach(v => { langCounts[v.language] = (langCounts[v.language] || 0) + 1; });
+
+            const languagesList = document.getElementById('languagesList');
+            const sortedLangs = Object.entries(langCounts).sort((a, b) => b[1] - a[1]);
+
+            languagesList.innerHTML = sortedLangs.length === 0 ? '<p class="text-gray-500 text-center py-4">No data yet</p>' :
+                sortedLangs.map(([lang, count]) => `
+                    <div class="flex items-center justify-between p-3 bg-gray-50 rounded-lg">
+                        <span class="font-medium">${languages[lang] || lang}</span>
+                        <span class="bg-primary text-white px-3 py-1 rounded-full text-sm font-bold">${count}</span>
+                    </div>
+                `).join('');
+
+            const recentVisits = document.getElementById('recentVisits');
+            const recent = visits.slice(-20).reverse();
+
+            recentVisits.innerHTML = recent.length === 0 ? '<tr><td colspan="3" class="p-3 text-center text-gray-500">No visits recorded yet</td></tr>' :
+                recent.map(v => `
+                    <tr class="border-b hover:bg-gray-50">
+                        <td class="p-3">${new Date(v.date).toLocaleString()}</td>
+                        <td class="p-3"><img src="https://flagcdn.com/w40/${v.countryCode || 'xx'}.png" class="country-flag inline mr-2" onerror="this.style.display='none'">${v.country || 'Unknown'}</td>
+                        <td class="p-3">${languages[v.language] || v.language}</td>
+                    </tr>
+                `).join('');
+        }
+
+        function getCountryCode(name) {
+            const codes = { 'Egypt': 'eg', 'United States': 'us', 'USA': 'us', 'Germany': 'de', 'Russia': 'ru', 'United Kingdom': 'gb', 'UK': 'gb', 'France': 'fr', 'Turkey': 'tr', 'Saudi Arabia': 'sa', 'UAE': 'ae', 'United Arab Emirates': 'ae', 'Kuwait': 'kw', 'Qatar': 'qa', 'Unknown': 'xx' };
+            return codes[name] || 'xx';
+        }
+
+        function refreshData() { loadAnalytics(); }
+
+        function exportData() {
+            const visits = JSON.parse(localStorage.getItem('am_visits') || '[]');
+            const csv = [['Date', 'Country', 'Language'].join(','), ...visits.map(v => [v.date, v.country, v.language].join(','))].join('\n');
+            const a = document.createElement('a');
+            a.href = URL.createObjectURL(new Blob([csv], { type: 'text/csv' }));
+            a.download = 'analytics_' + new Date().toISOString().split('T')[0] + '.csv';
+            a.click();
+        }
+
+        function clearLocalData() {
+            if (confirm('Clear local visit data?')) {
+                localStorage.removeItem('am_visits');
+                loadAnalytics();
+            }
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            if (sessionStorage.getItem('adminLoggedIn')) {
+                document.getElementById('loginScreen').classList.add('hidden');
+                document.getElementById('dashboardScreen').classList.remove('hidden');
+                loadAnalytics();
+            }
+        });
+    </script>
+</body>
+</html>
