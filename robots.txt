@@ -1,3 +1,16 @@
 User-agent: *
 Allow: /
+
+# Sitemap
 Sitemap: https://adelmaurice.vercel.app/sitemap.xml
+
+# Allow all languages
+Allow: /?lang=en
+Allow: /?lang=de
+Allow: /?lang=ru
+
+# Disallow admin panel (for security)
+Disallow: /admin.html
+
+# Crawl-delay (optional)
+Crawl-delay: 1
