@@ -939,7 +939,7 @@
                         <div><div class="font-bold text-primary text-lg ar-only">عادل موريس</div><div class="font-bold text-primary text-lg en-only de-only ru-only">Adel Maurice</div><div class="text-secondary text-sm font-semibold ar-only">محاسب قانوني - خبير ضرائب</div><div class="text-secondary text-sm font-semibold en-only">Legal Accountant - Tax Expert</div><div class="text-secondary text-sm font-semibold de-only">Rechtsbuchhalter - Steuerexperte</div><div class="text-secondary text-sm font-semibold ru-only">Бухгалтер - Налоговый эксперт</div></div>
                     </div>
                     <div class="space-y-4 mb-8">
-                        <div class="flex items-center gap-4 p-4 bg-white rounded-xl shadow-sm"><div class="w-12 h-12 bg-gold-gradient rounded-xl flex items-center justify-center text-white"><i class="fas fa-map-marker-alt"></i></div><div><h4 class="font-bold text-primary ar-only">العناوين</h4><h4 class="font-bold text-primary en-only">Addresses</h4><h4 class="font-bold text-primary de-only">Adressen</h4><h4 class="font-bold text-primary ru-only">Адреса</h4><p class="text-gray-600 ar-only">73 شارع الظاهر، برج الإيمان، القاهرة</p><p class="text-gray-600 ar-only">شارع النصر، عمارة عدلي حكيم، الغردقة</p><p class="text-gray-600 en-only">73 El-Zaher St, Al-Iman Tower, Cairo</p><p class="text-gray-600 en-only">Nasr St, Adly Hakim Bldg, Hurghada</p></div></div>
+                        <div class="flex items-center gap-4 p-4 bg-white rounded-xl shadow-sm"><div class="w-12 h-12 bg-gold-gradient rounded-xl flex items-center justify-center text-white"><i class="fas fa-map-marker-alt"></i></div><div><h4 class="font-bold text-primary ar-only">العناوين</h4><h4 class="font-bold text-primary en-only">Addresses</h4><h4 class="font-bold text-primary de-only">Adressen</h4><h4 class="font-bold text-primary ru-only">Адреса</h4><p class="text-gray-600 ar-only">73 شارع الظاهر، برج الإيمان، القاهرة</p><p class="text-gray-600 ar-only">شارع النصر، عمارة عدلي حكيم، الغردقة</p><p class="text-gray-600 en-only">73 El-Zaher St, Al-Iman Tower, Cairo</p><p class="text-gray-600 en-only">Nasr St, Adly Hakim Bldg, Hurghada</p><p class="text-gray-600 de-only">73 El-Zaher St, Al-Iman Tower, Cairo</p><p class="text-gray-600 de-only">Nasr St, Adly Hakim Bldg, Hurghada</p><p class="text-gray-600 ru-only">73 El-Zaher St, Al-Iman Tower, Cairo</p><p class="text-gray-600 ru-only">Nasr St, Adly Hakim Bldg, Hurghada</p></div></div>
                         <div class="flex items-center gap-4 p-4 bg-white rounded-xl shadow-sm"><div class="w-12 h-12 bg-gold-gradient rounded-xl flex items-center justify-center text-white"><i class="fas fa-phone-alt"></i></div><div><h4 class="font-bold text-primary ar-only">الهاتف</h4><h4 class="font-bold text-primary en-only">Phone</h4><h4 class="font-bold text-primary de-only">Telefon</h4><h4 class="font-bold text-primary ru-only">Телефон</h4><p class="text-gray-600" dir="ltr">+201001382166</p></div></div>
                         <div class="flex items-center gap-4 p-4 bg-white rounded-xl shadow-sm"><div class="w-12 h-12 bg-gold-gradient rounded-xl flex items-center justify-center text-white"><i class="fas fa-envelope"></i></div><div><h4 class="font-bold text-primary ar-only">البريد الإلكتروني</h4><h4 class="font-bold text-primary en-only">Email</h4><h4 class="font-bold text-primary de-only">E-Mail</h4><h4 class="font-bold text-primary ru-only">Почта</h4><p class="text-gray-600">bishoyadel675@gmail.com</p></div></div>
                         <div class="flex items-center gap-4 p-4 bg-white rounded-xl shadow-sm"><div class="w-12 h-12 bg-gold-gradient rounded-xl flex items-center justify-center text-white"><i class="fas fa-clock"></i></div><div><h4 class="font-bold text-primary ar-only">ساعات العمل</h4><h4 class="font-bold text-primary en-only">Working Hours</h4><h4 class="font-bold text-primary de-only">Öffnungszeiten</h4><h4 class="font-bold text-primary ru-only">Часы работы</h4><p class="text-gray-600 ar-only">الأحد - الخميس: 9 ص - 9 م</p><p class="text-gray-600 en-only">Sun-Thu: 9 AM - 9 PM</p><p class="text-gray-600 de-only">So-Do: 9-21 Uhr</p><p class="text-gray-600 ru-only">Вс-Чт: 9-21</p></div></div>
@@ -1015,34 +1015,25 @@
 
     <button id="backToTop" class="fixed bottom-8 left-8 w-12 h-12 bg-gold-gradient text-white rounded-full shadow-lg opacity-0 invisible transition-all duration-300 hover:scale-110 z-40" style="min-width:44px;min-height:44px"><i class="fas fa-arrow-up"></i></button>
 
-    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+            <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script>
-    // ===== LOADER - يختفي بعد تحميل الصفحة =====
+    // ===== LOADER =====
     window.addEventListener('load', function() {
         setTimeout(function() {
             var loader = document.getElementById('loader');
             if (loader) {
                 loader.style.opacity = '0';
-                setTimeout(function() {
-                    loader.style.display = 'none';
-                }, 500);
+                setTimeout(function() { loader.style.display = 'none'; }, 500);
             }
         }, 800);
     });
 
-    // ===== LANGUAGE SWITCHER - مقفول بيفتح لما تضغط =====
+    // ===== LANGUAGE SWITCHER - مقفول =====
     var langPanelOpen = false;
     document.getElementById('langToggle').addEventListener('click', function() {
         langPanelOpen = !langPanelOpen;
-        var panel = document.getElementById('langPanel');
-        if (langPanelOpen) {
-            panel.classList.add('open');
-        } else {
-            panel.classList.remove('open');
-        }
+        document.getElementById('langPanel').classList.toggle('open', langPanelOpen);
     });
-
-    // يقفل اللستة لما تضغط برة
     document.addEventListener('click', function(e) {
         var toggle = document.getElementById('langToggle');
         var panel = document.getElementById('langPanel');
@@ -1057,19 +1048,24 @@
         var item = header.parentElement;
         var body = item.querySelector('.acc-body');
         var isActive = item.classList.contains('active');
-        // يقفل الكل الأول
         document.querySelectorAll('.acc-item').forEach(function(ai) {
             ai.classList.remove('active');
             ai.querySelector('.acc-body').classList.remove('open');
         });
-        // لو مش مفتوح يفتحه
         if (!isActive) {
             item.classList.add('active');
             body.classList.add('open');
         }
     }
 
-    // ===== LANGUAGE SWITCH FUNCTION =====
+    // ===== عناوين الصفحة لكل لغة =====
+    var pageTitles = {
+        ar: { title: 'عادل موريس | أفضل محاسب قانوني في مصر', desc: 'أفضل محاسب قانوني في مصر. خبير ضرائب ومحاسب قانوني معتمد في القاهرة والغردقة. 35 عام خبرة' },
+        en: { title: 'Adel Maurice | Best Legal Accountant in Egypt', desc: 'Best Legal Accountant in Egypt. Tax expert and certified legal accountant in Cairo and Hurghada. 35 years of experience' },
+        de: { title: 'Adel Maurice | Bester Rechtsbuchhalter in Ägypten', desc: 'Bester Rechtsanwaltlicher Buchhalter in Ägypten. Steuerexperte und zertifizierter Rechtsbuchhalter in Kairo und Hurghada. 35 Jahre Erfahrung' },
+        ru: { title: 'Адель Морис | Лучший бухгалтер в Египте', desc: 'Лучший юридический бухгалтер в Египте. Налоговый эксперт в Каире и Хургаде. 35 лет опыта' }
+    };
+
     var serviceTexts = {
         ar: { placeholder: 'اختر الخدمة المطلوبة', accounting: 'المحاسبة المالية', tax: 'الاستشارات الضريبية', audit: 'المراجعة القانونية', analysis: 'التحليل المالي', company: 'تأسيس الشركات', consulting: 'الاستشارات القانونية', other: 'أخرى' },
         en: { placeholder: 'Select required service', accounting: 'Financial Accounting', tax: 'Tax Consulting', audit: 'Legal Audit', analysis: 'Financial Analysis', company: 'Company Establishment', consulting: 'Legal Consulting', other: 'Other' },
@@ -1083,22 +1079,30 @@
         var btnEn = document.getElementById('btnEn');
         var btnDe = document.getElementById('btnDe');
         var btnRu = document.getElementById('btnRu');
-        var pageTitle = document.getElementById('pageTitle');
 
-        // تحديث قائمة الخدمات
-        var t = serviceTexts[lang] || serviceTexts['ar'];
-        document.getElementById('servicePlaceholder').textContent = t.placeholder;
-        document.getElementById('optAccounting').textContent = t.accounting;
-        document.getElementById('optTax').textContent = t.tax;
-        document.getElementById('optAudit').textContent = t.audit;
-        document.getElementById('optAnalysis').textContent = t.analysis;
-        document.getElementById('optCompany').textContent = t.company;
-        document.getElementById('optConsulting').textContent = t.consulting;
-        document.getElementById('optOther').textContent = t.other;
+        // ===== تحديث عنوان الصفحة أولاً =====
+        var t = pageTitles[lang] || pageTitles['ar'];
+        document.title = t.title;
+        var pageTitleEl = document.getElementById('pageTitle');
+        if (pageTitleEl) pageTitleEl.textContent = t.title;
 
-        // إزالة كل الكلاسات
+        // ===== تحديث meta description =====
+        var metaDesc = document.querySelector('meta[name="description"]');
+        if (metaDesc) metaDesc.setAttribute('content', t.desc);
+
+        // ===== تحديث قائمة الخدمات =====
+        var s = serviceTexts[lang] || serviceTexts['ar'];
+        document.getElementById('servicePlaceholder').textContent = s.placeholder;
+        document.getElementById('optAccounting').textContent = s.accounting;
+        document.getElementById('optTax').textContent = s.tax;
+        document.getElementById('optAudit').textContent = s.audit;
+        document.getElementById('optAnalysis').textContent = s.analysis;
+        document.getElementById('optCompany').textContent = s.company;
+        document.getElementById('optConsulting').textContent = s.consulting;
+        document.getElementById('optOther').textContent = s.other;
+
+        // ===== إزالة كل الكلاسات =====
         body.classList.remove('english', 'german', 'russian', 'arabic');
-
         [btnAr, btnEn, btnDe, btnRu].forEach(function(b) { b.classList.remove('active'); });
 
         if (lang === 'en') {
@@ -1106,25 +1110,21 @@
             body.setAttribute('dir', 'ltr');
             body.setAttribute('lang', 'en');
             btnEn.classList.add('active');
-            pageTitle.textContent = 'Adel Maurice | Legal Accountant';
         } else if (lang === 'de') {
             body.classList.add('german');
             body.setAttribute('dir', 'ltr');
             body.setAttribute('lang', 'de');
             btnDe.classList.add('active');
-            pageTitle.textContent = 'Adel Maurice | Rechtsbuchhalter';
         } else if (lang === 'ru') {
             body.classList.add('russian');
             body.setAttribute('dir', 'ltr');
             body.setAttribute('lang', 'ru');
             btnRu.classList.add('active');
-            pageTitle.textContent = 'Адель Морис | Бухгалтер';
         } else {
             body.classList.add('arabic');
             body.setAttribute('dir', 'rtl');
             body.setAttribute('lang', 'ar');
             btnAr.classList.add('active');
-            pageTitle.textContent = 'عادل موريس | محاسب قانوني';
         }
 
         localStorage.setItem('language', lang);
@@ -1133,7 +1133,6 @@
         langPanelOpen = false;
         document.getElementById('langPanel').classList.remove('open');
 
-        // يعمل تحديث لـ AOS
         if (typeof AOS !== 'undefined') {
             setTimeout(function() { AOS.refresh(); }, 100);
         }
@@ -1202,7 +1201,6 @@
         }
     });
 
-    // لون الروابط على الموبايل
     if (window.innerWidth < 1024) {
         navLinks.forEach(function(l) { l.classList.remove('text-white'); l.classList.add('text-primary'); });
     }
@@ -1230,10 +1228,7 @@
     if (statsSection) {
         var observer = new IntersectionObserver(function(entries) {
             entries.forEach(function(entry) {
-                if (entry.isIntersecting && !counted) {
-                    animateCounters();
-                    counted = true;
-                }
+                if (entry.isIntersecting && !counted) { animateCounters(); counted = true; }
             });
         }, { threshold: 0.5 });
         observer.observe(statsSection);
@@ -1244,9 +1239,7 @@
         anchor.addEventListener('click', function(e) {
             e.preventDefault();
             var target = document.querySelector(this.getAttribute('href'));
-            if (target) {
-                target.scrollIntoView({ behavior: 'smooth', block: 'start' });
-            }
+            if (target) { target.scrollIntoView({ behavior: 'smooth', block: 'start' }); }
         });
     });
 
@@ -1263,7 +1256,6 @@
         });
     }
 
-    // check URL params for success
     if (window.location.search.indexOf('success') !== -1 || window.location.search.indexOf('message') !== -1) {
         formSuccess.style.display = 'block';
         window.history.replaceState({}, document.title, window.location.pathname);
